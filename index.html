@@ -279,24 +279,7 @@ table.grid td.c.has{background:var(--navy-soft)!important;color:var(--navy);font
   #print{display:block!important;position:static!important;width:100%!important;font-family:'Cairo',Arial,sans-serif;color:#000;padding:0}
   @page{size:A4 portrait;margin:12mm 12mm 14mm}
 }
-.pv{width:100%;font-size:15px;line-height:1.5;color:#000}
-.pv-h{display:flex;align-items:center;gap:18px;border-bottom:3px double #254d67;padding-bottom:12px;margin-bottom:16px}
-.pv-h img{width:100px;height:auto}
-.pv-h h1{font-family:'Cinzel',serif;margin:0 0 4px;color:#16384f;font-size:30px;line-height:1.15}
-.pv-h p{margin:2px 0;color:#333;font-size:16px}
-.pv-h .meta{font-size:13px;color:#555;text-align:end;white-space:nowrap}
-.pv table{width:100%;border-collapse:collapse;font-size:15px;margin-bottom:14px;page-break-inside:auto}
-.pv tr{page-break-inside:avoid}
-.pv th,.pv td{border:1px solid #777;padding:9px 10px}
-.pv th{background:#e8eff5;font-weight:700}
-.pv tfoot th,.pv tfoot td{background:#f6efe0;font-weight:800;font-size:16px}
-.pv .pvinfo{table-layout:fixed}.pv .pvinfo th{text-align:start;width:13%}.pv .pvinfo td{width:20%}
-.pv .num-c{text-align:end;white-space:nowrap}
-.pv .notes{border:1px solid #777;padding:10px 12px;margin:6px 0 10px;font-size:15px}
-.pv .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:80px;text-align:center;font-size:15px}
-.pv .sig div{border-top:1.5px solid #000;padding-top:8px;font-weight:700}
-.pv .sig small{display:block;font-weight:400;color:#444;margin-top:2px}
-.pv.wide table{font-size:12px}.pv.wide th,.pv.wide td{padding:5px 6px}
+
 </style>
 </head>
 <body>
@@ -962,17 +945,69 @@ function downloadCsv(rows,name){
   }
 }
 function download(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500); }
-function printHeader(title,sub){ return `<div class="pv-h"><img src="${LOGO_N}"><div style="flex:1"><h1>Al-Moudira Transfers</h1><p><b>${esc(title)}</b> · ${t(S.div)}</p><p>${sub||''}</p></div><div class="meta">Hotel Al Moudira · Luxor<br>${new Date().toLocaleString('en-GB')}</div></div>`; }
+const PRINT_CSS=`*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff}
+body{font-family:'Cairo',Arial,Tahoma,sans-serif;color:#000}
+.pv{width:100%;font-size:15px;line-height:1.5;color:#000}
+.ph{text-align:center;padding-bottom:14px;margin-bottom:18px;border-bottom:3px double #16384f}
+.ph img{display:block;width:100px;height:auto;margin:0 auto 8px}
+.ph .brand{font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:32px;letter-spacing:3px;text-transform:uppercase;color:#16384f;line-height:1.1}
+.ph .hotel{margin-top:5px;font-size:12.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#a07d3b}
+.ph .doc{display:inline-block;margin-top:14px;padding:7px 30px;border-radius:30px;background:#16384f;color:#fff;font-size:18px;font-weight:800;letter-spacing:.5px}
+.ph .doc span{color:#e3cc98;font-weight:700}
+.ph .sub{margin-top:9px;font-size:16px;font-weight:700;color:#111}
+.ph .printed{margin-top:3px;font-size:12px;color:#555}
+table{width:100%;border-collapse:collapse;margin:0 0 16px}
+th,td{border:1px solid #444;padding:9px 10px;font-size:15px;color:#000;vertical-align:middle}
+th{background:#e3ebf3;color:#0f2a3d;font-weight:800;text-align:start}
+td{font-weight:600}
+tfoot td,tfoot th{background:#f4ead5;font-weight:800;font-size:15.5px}
+tr{page-break-inside:avoid}
+.num-c,td.n,th.n{text-align:end;white-space:nowrap}
+td.c,th.c{text-align:center}
+.pvinfo{table-layout:fixed}.pvinfo th{width:13%}.pvinfo td{width:20%}
+.notes{border:1px solid #444;padding:10px 12px;margin:4px 0 12px;font-size:15px}
+.sig{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:85px;text-align:center;font-size:15px}
+.sig div{border-top:1.6px solid #000;padding-top:8px;font-weight:800}
+.sig small{display:block;margin-top:2px;font-weight:500;color:#333}
+.wide th,.wide td{font-size:13px;padding:5px 8px}
+.wide .ph,.xwide .ph{padding-bottom:8px;margin-bottom:10px}.wide .ph img,.xwide .ph img{width:62px;margin-bottom:3px}.wide .ph .brand,.xwide .ph .brand{font-size:24px}.wide .ph .doc,.xwide .ph .doc{margin-top:7px;padding:4px 24px;font-size:15px}.wide .ph .sub,.xwide .ph .sub{margin-top:4px;font-size:14px}
+.xwide th,.xwide td{font-size:10.5px;padding:4px 3px}
+.card{margin:0 0 14px}.card>h3,.card h3{display:none}
+.muted{color:#444;font-weight:500}
+.kpis{margin-bottom:12px}.kpi{border:1.5px solid #16384f;border-radius:10px;padding:10px 16px}.kpi .l{font-weight:800;font-size:15px}.kpi .v{font-size:24px;font-weight:800}
+.dept-row{display:flex;align-items:center;gap:10px;border-bottom:1px dashed #888;padding:7px 0;font-size:15px;font-weight:700}.dept-row .nm{flex:1}.dept-row .val{text-align:end}
+.track,.chip,.ic,svg,.empty svg,button{display:none!important}
+.badge{font-weight:800}`;
+function printHeader(title,sub){ return `<div class="ph"><img src="${LOGO_N}" alt=""><div class="brand">Al-Moudira Transfers</div><div class="hotel">Hotel Al Moudira · Luxor</div><div class="doc">${esc(title)} <span>· ${t(S.div)}</span></div>${sub?`<div class="sub">${sub}</div>`:''}<div class="printed">${new Date().toLocaleString('en-GB')}</div></div>`; }
 function doPrint(html,wide){
-  closeModal(); document.body.style.overflow=''; window.scrollTo(0,0);
-  const p=$('print'); p.innerHTML=`${wide?'<style>@page{size:A4 landscape;margin:10mm}</style>':''}<div class="pv${wide?' wide':''}" dir="${LANG==='ar'?'rtl':'ltr'}">${html}</div>`;
-  setTimeout(()=>{ window.print(); },250);
+  closeModal(); document.body.style.overflow='';
+  const cls=wide===2?'xwide':wide?'wide':'';
+  const page=wide?'@page{size:A4 landscape;margin:9mm}':'@page{size:A4 portrait;margin:12mm 12mm 14mm}';
+  const body=`<div class="pv ${cls}" dir="${LANG==='ar'?'rtl':'ltr'}">${html}</div>`;
+  const mobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(!mobile){
+    try{
+      const f=document.createElement('iframe'); f.setAttribute('aria-hidden','true');
+      f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden';
+      document.body.appendChild(f);
+      const d=f.contentWindow.document;
+      d.open(); d.write(`<!DOCTYPE html><html lang="${LANG}"><head><meta charset="utf-8"><title>Al-Moudira Transfers</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet"><style>${PRINT_CSS}${page}</style></head><body>${body}</body></html>`); d.close();
+      let done=false; const go=()=>{ if(done) return; done=true; try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ console.warn(e); } setTimeout(()=>f.remove(),120000); };
+      const ready=(d.fonts&&d.fonts.ready)?d.fonts.ready:Promise.resolve();
+      Promise.race([ready,new Promise(r=>setTimeout(r,1500))]).then(()=>setTimeout(go,150));
+      return;
+    }catch(e){ console.warn('iframe print',e); }
+  }
+  window.scrollTo(0,0);
+  $('print').innerHTML=`<style>${PRINT_CSS}${page}</style>${body}`;
+  setTimeout(()=>{ window.print(); },300);
 }
 function printRep(){
   const tabName={dxd:'dayDept',sheet:'mSheet',dept:'deptSum',items:'itemRep',daily:'daily',annual:'annual'}[S.rtab];
   const sub={dxd:mName(S.ym),sheet:mName(S.ym)+(S.rdept?' · '+nm(deptById(S.rdept)):''),dept:S.rfrom+' → '+S.rto,items:S.rfrom+' → '+S.rto,daily:dName(S.rdate),annual:S.year}[S.rtab];
   const clone=$('rep').cloneNode(true); clone.querySelectorAll('.list-item,.day-h').forEach(e=>e.remove());
-  doPrint(printHeader(t(tabName),esc(sub))+clone.innerHTML.replace(/class="tbl-wrap"/g,'').replace(/class="t( grid)?"/g,''), ['dxd','sheet','items','annual'].includes(S.rtab));
+  doPrint(printHeader(t(tabName),esc(sub))+clone.innerHTML.replace(/class="tbl-wrap"/g,'').replace(/class="t( grid)?"/g,''), S.rtab==='sheet'?2:['dxd','items','annual'].includes(S.rtab)?1:0);
 }
 function printVoucher(id){
   const v=DB.vouchers.find(x=>x.id===id), d=deptById(v.dept), st=storeById(v.from);
