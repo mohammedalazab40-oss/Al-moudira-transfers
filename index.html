@@ -414,7 +414,7 @@ const TX = {
   byDept:'التكلفة حسب اللوكيشن',dailyTrend:'حركة التكلفة اليومية',topItems:'أعلى الأصناف تكلفة',annual:'الملخص السنوي',share:'النسبة',total:'الإجمالي',
   qty:'الكمية',price:'السعر',value:'القيمة',item:'الصنف',items:'الأصناف',dept:'اللوكيشن',depts:'اللوكيشنات',date:'التاريخ',from:'من',to:'إلى لوكيشن',
   notes:'ملاحظات',addItems:'إضافة أصناف',save:'حفظ',saveNew:'حفظ وجديد',cancel:'إلغاء',del:'حذف',edit:'تعديل',print:'طباعة',dup:'تكرار',
-  search:'بحث...',noData:'لا توجد بيانات',lines:'بند',status:'الحالة',pending:'قيد الاستلام',received:'تم الاستلام',confirmRec:'تأكيد الاستلام',
+  search:'بحث...',noData:'لا توجد بيانات',lines:'بند',status:'الحالة',pending:'في انتظار التفعيل',received:'مفعّل',confirmRec:'تفعيل التحويل',
   mSheet:'الشيت الشهري',deptSum:'ملخص اللوكيشنات',itemRep:'استهلاك الأصناف',daily:'تكلفة يوم',exportCsv:'تصدير Excel',
   users:'المستخدمون',stores:'المخازن',backup:'نسخة احتياطية Excel',restore:'استرجاع نسخة من Excel',restoreQ:'سيتم استبدال كل البيانات الحالية ببيانات الملف:\n{s}\nمتابعة؟',reset:'مسح كل التحويلات',logout:'تسجيل الخروج',changePwd:'تغيير كلمة المرور',
   language:'اللغة',role:'الصلاحية',admin:'مدير النظام',keeper:'أمين مخزن',viewer:'مشاهدة فقط',name:'الاسم',active:'نشط',add:'إضافة',
@@ -428,11 +428,11 @@ const TX = {
   itemsCount:'عدد الأصناف',welcome:'مرحباً',about:'حول البرنامج',aboutT:'تحويلات المأكولات من المطبخ الرئيسي والمشروبات والخمور من البار الرئيسي إلى لوكيشنات الفندق، مع تقارير تكاليف يومية وشهرية وسنوية.',
   masterData:'البيانات الأساسية',system:'النظام',account:'الحساب',readOnly:'صلاحية مشاهدة فقط',noPerm:'ليس لديك صلاحية',lastPrice:'آخر سعر',
   printRep:'طباعة التقرير',year:'السنة',dayCost:'تكلفة اليوم',vouchersOfDay:'أذون اليوم',storeFrom:'المخزن',priceWarn:'أصناف بدون سعر',
-  used:'مرات الاستخدام',all:'الكل',grand:'الإجمالي العام',sheetNote:'الأعمدة = أيام الشهر، الخلايا = الكميات المحولة',setPrices:'تسعير الأصناف',syncCode:'كود المزامنة للفندق',needSync:'اكتب كود المزامنة (مرة واحدة على هذا الجهاز)',cloudWait:'جاري الاتصال بالسحابة...',cloudFail:'تعذر الاتصال بالسحابة — تحقق من كود المزامنة أو الإنترنت',
+  used:'مرات الاستخدام',all:'الكل',grand:'الإجمالي العام',sheetNote:'الأعمدة = أيام الشهر، الخلايا = الكميات المحولة',setPrices:'تسعير الأصناف',mergeQ:'على هذا الجهاز بيانات لم تُرفع للشيت: {u} مستخدم و {v} تحويل. رفعها الآن؟',approve:'تفعيل',approved:'تم التفعيل',approveAll:'تفعيل الكل',approveAllQ:'تفعيل {n} تحويل مرة واحدة؟',waitingApproval:'تحويل في انتظار التفعيل',review:'مراجعة',syncCode:'كود المزامنة للفندق',needSync:'اكتب كود المزامنة (مرة واحدة على هذا الجهاز)',cloudWait:'جاري الاتصال بالسحابة...',cloudFail:'تعذر الاتصال بالسحابة — تحقق من كود المزامنة أو الإنترنت',
   syncOnline:'متزامن مع Google Sheet',syncSyncing:'جاري رفع التعديلات...',syncOffline:'بدون إنترنت — سيتم الرفع تلقائياً عند الاتصال',syncLocal:'محلي فقط (المزامنة غير مفعلة)',syncTitle:'المزامنة السحابية',
   syncDisc:'فصل هذا الجهاز عن المزامنة',syncDiscQ:'فصل هذا الجهاز عن السحابة؟ ستحتاج كود المزامنة للاتصال مرة أخرى.',syncConnect:'تفعيل المزامنة على هذا الجهاز',remoteUpd:'تم تحديث البيانات من جهاز آخر',tempNo:'رقم مؤقت (بدون إنترنت)',updating:'جاري تحديث التطبيق لآخر نسخة...',updateLater:'يوجد تحديث — سيتم التحديث بعد حفظ التحويل',keepMaster:'مع الإبقاء على الأصناف والأسعار واللوكيشنات والمستخدمين',install:'تثبيت التطبيق على الموبايل',installSub:'يعمل بدون إنترنت كتطبيق مستقل',iosInstall:'على الآيفون: اضغط زر المشاركة ⬆ ثم "إضافة إلى الشاشة الرئيسية"',installed:'التطبيق مثبت',offlineReady:'التطبيق جاهز للعمل بدون إنترنت',updateReady:'يوجد تحديث جديد — اضغط لإعادة التحميل',issuedBy:'المُسلِّم',food:'مأكولات',bev:'مشروبات',controller:'مراقب تكاليف',custom:'مخصصة',perms:'الصلاحيات',rolePreset:'الدور (قالب صلاحيات)',
   pg_divs:'الأقسام المسموحة',pg_transfers:'التحويلات',pg_master:'البيانات الأساسية',pg_reportsG:'التقارير',pg_admin:'الإدارة',
-  p_food:'مأكولات (Food)',p_bev:'مشروبات وخمور (Beverage)',p_create:'إنشاء تحويل',p_editOwn:'تعديل تحويلاته',p_editAll:'تعديل كل التحويلات',p_delete:'حذف تحويل',p_confirm:'تأكيد الاستلام',
+  p_food:'مأكولات (Food)',p_bev:'مشروبات وخمور (Beverage)',p_create:'إنشاء تحويل',p_editOwn:'تعديل تحويلاته',p_editAll:'تعديل كل التحويلات',p_delete:'حذف تحويل',p_confirm:'تفعيل التحويلات',
   p_prices:'تعديل الأسعار',p_items:'إدارة الأصناف',p_locations:'إدارة اللوكيشنات',p_reports:'عرض التقارير',p_export:'تصدير وطباعة',p_users:'إدارة المستخدمين',p_backup:'نسخ احتياطي واسترجاع',
   needDiv:'اختر قسم واحد على الأقل (مأكولات أو مشروبات)',division:'القسم',group:'المجموعة',bevVoucher:'إذن تحويل مشروبات من البار الرئيسي',sources:'مصادر التحويل',lastAdmin:'لا بد من وجود مستخدم نشط واحد على الأقل بصلاحية إدارة المستخدمين',dayDept:'التكلفة اليومية للوكيشنات',addLoc:'إضافة لوكيشن',sourceK:'المطبخ الرئيسي',locHint:'التحويل يخرج دائماً من المطبخ الرئيسي',tapDay:'اضغط على أي يوم لعرض تفاصيله',noPriceF:'بدون سعر',usedF:'مستخدمة',unpricedLines:'بند بدون سعر',applyPrice:'تطبيق السعر على البنود غير المسعّرة',applyQ:'تطبيق السعر {p} على {n} بند بدون سعر لهذا الصنف في التحويلات؟',applied:'تم تسعير {n} بند',pendingChanges:'أسعار معدّلة',saveAll:'حفظ الأسعار',discard:'تراجع',needPriceFirst:'اكتب السعر أولاً',itemsSub:'اكتب السعر مباشرة في الخانة ثم اضغط حفظ الأسعار'},
  en:{loginSub:'Food & beverage transfer system — Hotel Al Moudira, Luxor',username:'Username',password:'Password',remember:'Remember me',signIn:'Sign in',
@@ -442,7 +442,7 @@ const TX = {
   byDept:'Cost by Location',dailyTrend:'Daily Cost Trend',topItems:'Top Items by Cost',annual:'Annual Summary',share:'Share',total:'Total',
   qty:'Qty',price:'Price',value:'Value',item:'Item',items:'Items',dept:'Location',depts:'Locations',date:'Date',from:'From',to:'To Location',
   notes:'Notes',addItems:'Add Items',save:'Save',saveNew:'Save & New',cancel:'Cancel',del:'Delete',edit:'Edit',print:'Print',dup:'Duplicate',
-  search:'Search...',noData:'No data',lines:'lines',status:'Status',pending:'Pending',received:'Received',confirmRec:'Confirm Receipt',
+  search:'Search...',noData:'No data',lines:'lines',status:'Status',pending:'Pending',received:'Approved',confirmRec:'Approve Transfer',
   mSheet:'Monthly Sheet',deptSum:'Location Summary',itemRep:'Item Consumption',daily:'Daily Cost',exportCsv:'Export Excel',
   users:'Users',stores:'Stores',backup:'Excel Backup',restore:'Restore from Excel',restoreQ:'All current data will be replaced with the file data:\n{s}\nContinue?',reset:'Clear all transfers',logout:'Sign out',changePwd:'Change Password',
   language:'Language',role:'Role',admin:'Administrator',keeper:'Storekeeper',viewer:'View only',name:'Name',active:'Active',add:'Add',
@@ -456,11 +456,11 @@ const TX = {
   itemsCount:'Items',welcome:'Welcome',about:'About',aboutT:'Food transfers from the Main Kitchen and beverage & liquor transfers from the Main Bar to hotel locations, with daily, monthly and annual cost reports.',
   masterData:'Master Data',system:'System',account:'Account',readOnly:'View-only access',noPerm:'You do not have permission',lastPrice:'Last price',
   printRep:'Print report',year:'Year',dayCost:'Day cost',vouchersOfDay:'Vouchers of the day',storeFrom:'Store',priceWarn:'Items without price',
-  used:'Times used',all:'All',grand:'Grand Total',sheetNote:'Columns = days of month, cells = transferred quantities',setPrices:'Set prices',syncCode:'Hotel sync code',needSync:'Enter the sync code (once on this device)',cloudWait:'Connecting to cloud...',cloudFail:'Could not connect to the cloud — check the sync code or internet',
+  used:'Times used',all:'All',grand:'Grand Total',sheetNote:'Columns = days of month, cells = transferred quantities',setPrices:'Set prices',mergeQ:'This device has data that was never uploaded: {u} user(s) and {v} transfer(s). Upload them to the sheet now?',approve:'Approve',approved:'Approved',approveAll:'Approve all',approveAllQ:'Approve {n} transfers at once?',waitingApproval:'transfers waiting for approval',review:'Review',syncCode:'Hotel sync code',needSync:'Enter the sync code (once on this device)',cloudWait:'Connecting to cloud...',cloudFail:'Could not connect to the cloud — check the sync code or internet',
   syncOnline:'Synced with Google Sheet',syncSyncing:'Uploading changes...',syncOffline:'Offline — changes will upload automatically',syncLocal:'Local only (sync not enabled)',syncTitle:'Cloud Sync',
   syncDisc:'Disconnect this device',syncDiscQ:'Disconnect this device from the cloud? You will need the sync code to reconnect.',syncConnect:'Enable sync on this device',remoteUpd:'Data updated from another device',tempNo:'temporary number (offline)',updating:'Updating to the latest version...',updateLater:'Update available — it will apply after you save this transfer',keepMaster:'Items, prices, locations and users are kept',install:'Install app on this device',installSub:'Works offline as a standalone app',iosInstall:'On iPhone: tap Share ⬆ then "Add to Home Screen"',installed:'App installed',offlineReady:'App is ready to work offline',updateReady:'A new version is available — tap to reload',issuedBy:'Issued by',food:'Food',bev:'Beverage',controller:'Cost Controller',custom:'custom',perms:'Permissions',rolePreset:'Role (permission template)',
   pg_divs:'Allowed divisions',pg_transfers:'Transfers',pg_master:'Master data',pg_reportsG:'Reports',pg_admin:'Administration',
-  p_food:'Food',p_bev:'Beverage & Liquor',p_create:'Create transfers',p_editOwn:'Edit own transfers',p_editAll:'Edit all transfers',p_delete:'Delete transfers',p_confirm:'Confirm receipt',
+  p_food:'Food',p_bev:'Beverage & Liquor',p_create:'Create transfers',p_editOwn:'Edit own transfers',p_editAll:'Edit all transfers',p_delete:'Delete transfers',p_confirm:'Approve transfers',
   p_prices:'Edit prices',p_items:'Manage items',p_locations:'Manage locations',p_reports:'View reports',p_export:'Export & print',p_users:'Manage users',p_backup:'Backup & restore',
   needDiv:'Select at least one division (Food or Beverage)',division:'Division',group:'Group',bevVoucher:'Beverage Transfer Voucher',sources:'Transfer sources',lastAdmin:'At least one active user must keep the Manage users permission',dayDept:'Daily Cost by Location',addLoc:'Add location',sourceK:'Main Kitchen',locHint:'Transfers always go out from the Main Kitchen',tapDay:'tap a day to see its details',noPriceF:'No price',usedF:'Used',unpricedLines:'unpriced lines',applyPrice:'Apply price to unpriced lines',applyQ:'Apply price {p} to {n} unpriced line(s) of this item in transfers?',applied:'{n} line(s) priced',pendingChanges:'prices changed',saveAll:'Save prices',discard:'Discard',needPriceFirst:'Enter a price first',itemsSub:'Type the price directly in the box, then tap Save prices'}
 };
@@ -641,7 +641,8 @@ function logout(){ try{localStorage.removeItem(SKEY);sessionStorage.removeItem(S
 
 /* ---------- navigation ---------- */
 function renderNav(){
-  const b=(v,i,l)=>`<button class="${S.view===v?'on':''}" onclick="go('${v}')">${ic(i)}<span class="l">${t(l)}</span></button>`;
+  const pn=ME&&can('confirm')?pendingOf(S.div).length:0;
+  const b=(v,i,l)=>`<button class="${S.view===v?'on':''}" style="position:relative" onclick="go('${v}')">${ic(i)}<span class="l">${t(l)}</span>${v==='list'&&pn?`<i style="position:absolute;top:0;inset-inline-end:calc(50% - 22px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;font-style:normal;font-weight:800;display:grid;place-items:center">${pn}</i>`:''}</button>`;
   $('bnav').innerHTML = b('dash','home','dash') + b('list','list','list') +
     (can('create') ? `<button class="fab" onclick="newTransfer()"><span class="c" data-l="${t('newT')}">${ic('plus')}</span><span class="l">${t('newT')}</span></button>` : '') +
     b('items','box','items') + (has('reports')?b('reports','chart','reports'):'') + b('more','more','more');
@@ -675,6 +676,11 @@ function vDash(){
     <div class="kpi"><div class="ic">${ic('file')}</div><div class="l">${t('vouchers')}</div><div class="v num">${vs.length}</div><div class="s">${fmt(vs.reduce((s,v)=>s+v.lines.length,0),0)} ${t('lines')}</div></div>
     <div class="kpi"><div class="ic">${ic('chart')}</div><div class="l">${t('avgDay')}</div><div class="v">${money(active?total/active:0)}</div><div class="s"><span class="num">${active}</span> ${t('activeDays')}</div></div>
   </div>
+  ${(()=>{ if(!can('confirm')) return ''; const pc=pendingOf(S.div).length, other=S.div==='food'?'bev':'food', po=divs().includes(other)?pendingOf(other).length:0; if(!pc&&!po) return '';
+    return `<div class="card" style="background:var(--gold-soft);border:1.5px solid var(--gold2);padding:12px 16px">
+      ${pc?`<div style="display:flex;align-items:center;gap:10px;cursor:pointer" onclick="S.st='pending';go('list')"><span style="font-size:22px">⏳</span><b style="flex:1;color:var(--navy)"><span class="num">${pc}</span> ${t('waitingApproval')}</b><span class="btn g s">${t('review')} →</span></div>`:''}
+      ${po?`<div style="display:flex;align-items:center;gap:10px;cursor:pointer;margin-top:${pc?8:0}px;font-size:13.5px;color:var(--muted)" onclick="setDiv('${other}');S.st='pending';go('list')">${ic(other==='bev'?'glass':'food')}<span style="flex:1">${t(other)}: <span class="num">${po}</span> ${t('waitingApproval')}</span>→</div>`:''}
+    </div>`; })()}
   ${zeroP?`<div class="card" style="background:var(--warn-soft);color:var(--warn);font-weight:700;padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between" onclick="S.iflt='nop';go('items')"><span>⚠ ${t('priceWarn')}: <span class="num">${zeroP}</span> ${t('lines')}</span><span>${t('setPrices')} →</span></div>`:''}
   <div class="grid2">
     <div class="card"><h3>${t('byDept')}<small>${t('cur')}</small></h3>
@@ -715,25 +721,31 @@ const empty = (m) => `<div class="empty">${ic('box')}<div>${m||t('noData')}</div
 /* ---------- TRANSFERS LIST ---------- */
 function vList(){
   const q=S.q.trim().toLowerCase();
-  let vs=inMonth(S.ym).filter(v=>!S.dept||v.dept===S.dept);
+  let vs=(S.st==='pending'?scope(DB.vouchers.filter(v=>v.status!=='received')):inMonth(S.ym)).filter(v=>!S.dept||v.dept===S.dept);
+  if(S.st==='received') vs=vs.filter(v=>v.status==='received');
   if(q) vs=vs.filter(v=>v.no.toLowerCase().includes(q)||(v.notes||'').toLowerCase().includes(q)||v.lines.some(l=>{const i=itemById(l.item);return i&&(i.en.toLowerCase().includes(q)||(i.ar||'').includes(q));}));
   vs.sort((a,b)=>b.date.localeCompare(a.date)||b.no.localeCompare(a.no));
   const tot=vs.reduce((s,v)=>s+vTotal(v),0);
   const groups={}; vs.forEach(v=>(groups[v.date]=groups[v.date]||[]).push(v));
   return `<h2 class="h1">${t('list')}</h2><p class="sub"><span class="num">${vs.length}</span> ${t('vouchers')} · ${money(tot)} ${t('cur')}</p>
+  <div class="tabs">${[['','all'],['pending','pending'],['received','received']].map(([k,l])=>`<button class="${(S.st||'')===k?'on':''}" onclick="S.st='${k}';render()">${t(l)}${k==='pending'?` <span class="num">(${pendingOf(S.div).length})</span>`:''}</button>`).join('')}</div>
+  ${S.st==='pending'&&can('confirm')&&vs.length?`<button class="btn g w" style="margin-bottom:12px" onclick="approveAll()">${ic('check')}${t('approveAll')} (<span class="num">${vs.length}</span>)</button>`:''}
   <div class="bar">
-    <input type="month" class="inp" value="${S.ym}" onchange="S.ym=this.value||S.ym;render()">
+    ${S.st==='pending'?'':`<input type="month" class="inp" value="${S.ym}" onchange="S.ym=this.value||S.ym;render()">`}
     ${ME.dept?'':`<select class="sel" onchange="S.dept=this.value;render()"><option value="">${t('allDepts')}</option>${DB.depts.map(d=>`<option value="${d.id}" ${S.dept===d.id?'selected':''}>${esc(nm(d))}</option>`).join('')}</select>`}
     <div class="searchbox">${ic('search')}<input class="inp" placeholder="${t('search')}" value="${esc(S.q)}" oninput="S.q=this.value;clearTimeout(window._sq);window._sq=setTimeout(()=>{render();const e=document.querySelector('.searchbox input');e.focus();e.setSelectionRange(e.value.length,e.value.length)},300)"></div>
   </div>
   ${vs.length?Object.entries(groups).map(([d,arr])=>`<div class="day-h"><span>${dName(d)}</span><span>${money(arr.reduce((s,v)=>s+vTotal(v),0))}</span></div>`+arr.map(vCard).join('')).join(''):empty()}`;
 }
+function pendingOf(cat){ const vs=DB.vouchers.filter(v=>v.status!=='received'&&(v.cat||'food')===cat); return ME&&ME.dept?vs.filter(v=>v.dept===ME.dept):vs; }
+function approveAll(){ const vs=pendingOf(S.div); if(!vs.length||!confirm(t('approveAllQ').replace('{n}',vs.length))) return; vs.forEach(v=>{ v.status='received'; v.recBy=ME.u; v.recTs=Date.now(); }); persist(); renderNav(); render(); toast(t('approved')+' ('+vs.length+')'); }
+function quickApprove(ev,id){ ev.stopPropagation(); const v=DB.vouchers.find(x=>x.id===id); if(!v) return; v.status='received'; v.recBy=ME.u; v.recTs=Date.now(); persist(); renderNav(); const y=window.scrollY; render(); window.scrollTo(0,y); toast(t('approved')+' — '+v.no); }
 function vCard(v){
   const d=deptById(v.dept)||{color:'#999'};
   return `<div class="list-item" onclick="openVoucher('${v.id}')">
     <div class="ic" style="background:${d.color}">${esc((d.en||'?')[0])}</div>
     <div class="mid"><b>${esc(nm(d))}</b><span><span class="num">${esc(v.no)}</span> · <span class="num">${v.lines.length}</span> ${t('lines')} · ${esc(v.user||'')}</span></div>
-    <div class="end">${money(vTotal(v))}<small><span class="badge ${v.status==='received'?'ok':'wr'}">${t(v.status==='received'?'received':'pending')}</span></small></div></div>`;
+    <div class="end">${money(vTotal(v))}<small><span class="badge ${v.status==='received'?'ok':'wr'}">${t(v.status==='received'?'received':'pending')}</span></small>${v.status!=='received'&&can('confirm')?`<button class="btn g s" style="margin-top:6px;height:30px;padding:0 10px" onclick="quickApprove(event,'${v.id}')">${ic('check')}${t('approve')}</button>`:''}</div></div>`;
 }
 function openVoucher(id){
   const v=DB.vouchers.find(x=>x.id===id); if(!v) return;
@@ -756,7 +768,7 @@ function openVoucher(id){
      ${v.status!=='received'&&can('confirm')?`<button class="btn g" onclick="confirmRec('${v.id}')">${ic('check')}${t('confirmRec')}</button>`:''}
      ${can('delete')?`<button class="btn d" onclick="delVoucher('${v.id}')">${ic('trash')}</button>`:''}`);
 }
-function confirmRec(id){ const v=DB.vouchers.find(x=>x.id===id); v.status='received'; v.recBy=ME.u; v.recTs=Date.now(); persist(); closeModal(); render(); toast(t('saved')); }
+function confirmRec(id){ const v=DB.vouchers.find(x=>x.id===id); v.status='received'; v.recBy=ME.u; v.recTs=Date.now(); persist(); closeModal(); renderNav(); render(); toast(t('approved')+' — '+v.no); }
 function delVoucher(id){ if(!confirm(t('confirmDel'))) return; DB.vouchers=DB.vouchers.filter(v=>v.id!==id); persist(); closeModal(); render(); toast(t('deleted')); }
 function editVoucher(id){ const v=DB.vouchers.find(x=>x.id===id); DRAFT=JSON.parse(JSON.stringify(v)); closeModal(); go('form'); }
 function dupVoucher(id){ const v=DB.vouchers.find(x=>x.id===id); DRAFT={cat:v.cat||'food',date:todayStr(),from:v.from,dept:v.dept,notes:'',lines:v.lines.map(l=>({...l,price:itemById(l.item)?.price||l.price}))}; closeModal(); go('form'); }
@@ -1293,8 +1305,14 @@ async function cloudStart(code){
   CLOUD.url=cloudCfg(); CLOUD.code=code;
   CLOUD.starting=(async()=>{
     const known = code===syncCode() && loadSyncState();
+    let extras=null;
     try{
       let j=await api('pull');
+      if(!known && !j.empty){
+        const su=new Set((j.data.users||[]).map(u=>u.u)), sv=new Set((j.data.vouchers||[]).map(v=>v.id));
+        const eu=(DB.users||[]).filter(u=>!su.has(u.u)), ev=(DB.vouchers||[]).filter(v=>!sv.has(v.id));
+        if(eu.length||ev.length) extras={users:clean(eu),vouchers:clean(ev)};
+      }
       if(j.empty){
         const data={}; COLS.forEach(c=>data[c]=clean(DB[c]||[]));
         await api('init',{data,seq:DB.seq||{}});
@@ -1302,6 +1320,12 @@ async function cloudStart(code){
       }
       if(known && CLOUD.outbox.length){ await flush(); j=await api('pull'); }
       applyPull(j);
+      if(extras){ const eu=extras.users, ev=extras.vouchers;
+        if(confirm(t('mergeQ').replace('{u}',eu.length).replace('{v}',ev.length))){
+          eu.forEach(u=>DB.users.push(u));
+          ev.forEach(v=>{ v.no=`${(v.cat||'food')==='bev'?'BV':'TR'}-${v.date.slice(0,4)}-T${Math.random().toString(36).slice(2,7).toUpperCase()}`; DB.vouchers.push(v); });
+          CLOUD.ready=true; persist(); CLOUD.ready=false;
+        } }
       api('status').then(x=>{ CLOUD.sheet=x.sheet+' — '+x.rows; if(ME&&S.view==='more') render(); }).catch(()=>{});
     }catch(e){
       console.warn('sync start',e); CLOUD.lastErr=String(e&&e.message||e);
@@ -1376,7 +1400,7 @@ function refreshStatus(){ setStatus(CLOUD.ready?(navigator.onLine?'online':'offl
 /* ---------- boot ---------- */
 load(); applyLang();
 if(cloudCfg()){ if(!syncCode()) $('lgSyncWrap').classList.remove('hidden'); else cloudStart(syncCode()).then(ok=>{ if(ok&&ME) scheduleRender(); }); }
-(function(){ try{ const s=JSON.parse(localStorage.getItem(SKEY)||sessionStorage.getItem(SKEY)||'null'); if(s){ const u=DB.users.find(x=>x.u===s.u&&x.active); if(u) return startApp(u);} }catch(e){} $('lgUser').focus(); })();
+(function(){ try{ const s=JSON.parse(localStorage.getItem(SKEY)||sessionStorage.getItem(SKEY)||'null'); if(s && !(cloudCfg()&&!syncCode())){ const u=DB.users.find(x=>x.u===s.u&&x.active); if(u) return startApp(u);} }catch(e){} $('lgUser').focus(); })();
 </script>
 </body>
 </html>
