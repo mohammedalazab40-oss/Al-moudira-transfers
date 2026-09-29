@@ -274,19 +274,29 @@ table.grid td.c.has{background:var(--navy-soft)!important;color:var(--navy);font
 #toast.on{opacity:1;transform:translateX(-50%)}
 #print{display:none}
 @media print{
+  html,body{width:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;margin:0!important;padding:0!important}
   body>*:not(#print){display:none!important}
-  #print{display:block;font-family:'Cairo',sans-serif;color:#000;padding:10mm}
-  @page{size:A4;margin:8mm}
+  #print{display:block!important;position:static!important;width:100%!important;font-family:'Cairo',Arial,sans-serif;color:#000;padding:0}
+  @page{size:A4 portrait;margin:12mm 12mm 14mm}
 }
-.pv-h{display:flex;align-items:center;gap:16px;border-bottom:3px double #254d67;padding-bottom:10px;margin-bottom:12px}
-.pv-h img{width:80px}
-.pv-h h1{font-family:'Cinzel',serif;margin:0;color:#16384f;font-size:22px}
-.pv-h p{margin:2px 0;color:#555;font-size:13px}
-.pv table{width:100%;border-collapse:collapse;font-size:12.5px}
-.pv th,.pv td{border:1px solid #999;padding:6px}
-.pv th{background:#e8eff5}
-.pv .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;text-align:center;font-size:13px}
-.pv .sig div{border-top:1px solid #333;padding-top:6px}
+.pv{width:100%;font-size:15px;line-height:1.5;color:#000}
+.pv-h{display:flex;align-items:center;gap:18px;border-bottom:3px double #254d67;padding-bottom:12px;margin-bottom:16px}
+.pv-h img{width:100px;height:auto}
+.pv-h h1{font-family:'Cinzel',serif;margin:0 0 4px;color:#16384f;font-size:30px;line-height:1.15}
+.pv-h p{margin:2px 0;color:#333;font-size:16px}
+.pv-h .meta{font-size:13px;color:#555;text-align:end;white-space:nowrap}
+.pv table{width:100%;border-collapse:collapse;font-size:15px;margin-bottom:14px;page-break-inside:auto}
+.pv tr{page-break-inside:avoid}
+.pv th,.pv td{border:1px solid #777;padding:9px 10px}
+.pv th{background:#e8eff5;font-weight:700}
+.pv tfoot th,.pv tfoot td{background:#f6efe0;font-weight:800;font-size:16px}
+.pv .pvinfo{table-layout:fixed}.pv .pvinfo th{text-align:start;width:13%}.pv .pvinfo td{width:20%}
+.pv .num-c{text-align:end;white-space:nowrap}
+.pv .notes{border:1px solid #777;padding:10px 12px;margin:6px 0 10px;font-size:15px}
+.pv .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:80px;text-align:center;font-size:15px}
+.pv .sig div{border-top:1.5px solid #000;padding-top:8px;font-weight:700}
+.pv .sig small{display:block;font-weight:400;color:#444;margin-top:2px}
+.pv.wide table{font-size:12px}.pv.wide th,.pv.wide td{padding:5px 6px}
 </style>
 </head>
 <body>
@@ -428,7 +438,7 @@ const TX = {
   itemsCount:'عدد الأصناف',welcome:'مرحباً',about:'حول البرنامج',aboutT:'تحويلات المأكولات من المطبخ الرئيسي والمشروبات والخمور من البار الرئيسي إلى لوكيشنات الفندق، مع تقارير تكاليف يومية وشهرية وسنوية.',
   masterData:'البيانات الأساسية',system:'النظام',account:'الحساب',readOnly:'صلاحية مشاهدة فقط',noPerm:'ليس لديك صلاحية',lastPrice:'آخر سعر',
   printRep:'طباعة التقرير',year:'السنة',dayCost:'تكلفة اليوم',vouchersOfDay:'أذون اليوم',storeFrom:'المخزن',priceWarn:'أصناف بدون سعر',
-  used:'مرات الاستخدام',all:'الكل',grand:'الإجمالي العام',sheetNote:'الأعمدة = أيام الشهر، الخلايا = الكميات المحولة',setPrices:'تسعير الأصناف',mergeQ:'على هذا الجهاز بيانات لم تُرفع للشيت: {u} مستخدم و {v} تحويل. رفعها الآن؟',approve:'تفعيل',approved:'تم التفعيل',approveAll:'تفعيل الكل',approveAllQ:'تفعيل {n} تحويل مرة واحدة؟',waitingApproval:'تحويل في انتظار التفعيل',review:'مراجعة',syncCode:'كود المزامنة للفندق',needSync:'اكتب كود المزامنة (مرة واحدة على هذا الجهاز)',cloudWait:'جاري الاتصال بالسحابة...',cloudFail:'تعذر الاتصال بالسحابة — تحقق من كود المزامنة أو الإنترنت',
+  used:'مرات الاستخدام',all:'الكل',grand:'الإجمالي العام',sheetNote:'الأعمدة = أيام الشهر، الخلايا = الكميات المحولة',setPrices:'تسعير الأصناف',delItemQ:'حذف "{x}" نهائياً؟',usedWarn:'هذا الصنف مستخدم في {n} بند داخل التحويلات — سيظهر في التحويلات القديمة بدون اسم. يُفضّل إيقافه (Active) بدل الحذف.',delDeptUsedQ:'"{x}" مستخدم في {n} تحويل. الحذف لا يمسح التحويلات لكنها ستظهر بدون اسم لوكيشن. متابعة الحذف؟',user:'المستخدم',mergeQ:'على هذا الجهاز بيانات لم تُرفع للشيت: {u} مستخدم و {v} تحويل. رفعها الآن؟',approve:'تفعيل',approved:'تم التفعيل',approveAll:'تفعيل الكل',approveAllQ:'تفعيل {n} تحويل مرة واحدة؟',waitingApproval:'تحويل في انتظار التفعيل',review:'مراجعة',syncCode:'كود المزامنة للفندق',needSync:'اكتب كود المزامنة (مرة واحدة على هذا الجهاز)',cloudWait:'جاري الاتصال بالسحابة...',cloudFail:'تعذر الاتصال بالسحابة — تحقق من كود المزامنة أو الإنترنت',
   syncOnline:'متزامن مع Google Sheet',syncSyncing:'جاري رفع التعديلات...',syncOffline:'بدون إنترنت — سيتم الرفع تلقائياً عند الاتصال',syncLocal:'محلي فقط (المزامنة غير مفعلة)',syncTitle:'المزامنة السحابية',
   syncDisc:'فصل هذا الجهاز عن المزامنة',syncDiscQ:'فصل هذا الجهاز عن السحابة؟ ستحتاج كود المزامنة للاتصال مرة أخرى.',syncConnect:'تفعيل المزامنة على هذا الجهاز',remoteUpd:'تم تحديث البيانات من جهاز آخر',tempNo:'رقم مؤقت (بدون إنترنت)',updating:'جاري تحديث التطبيق لآخر نسخة...',updateLater:'يوجد تحديث — سيتم التحديث بعد حفظ التحويل',keepMaster:'مع الإبقاء على الأصناف والأسعار واللوكيشنات والمستخدمين',install:'تثبيت التطبيق على الموبايل',installSub:'يعمل بدون إنترنت كتطبيق مستقل',iosInstall:'على الآيفون: اضغط زر المشاركة ⬆ ثم "إضافة إلى الشاشة الرئيسية"',installed:'التطبيق مثبت',offlineReady:'التطبيق جاهز للعمل بدون إنترنت',updateReady:'يوجد تحديث جديد — اضغط لإعادة التحميل',issuedBy:'المُسلِّم',food:'مأكولات',bev:'مشروبات',controller:'مراقب تكاليف',custom:'مخصصة',perms:'الصلاحيات',rolePreset:'الدور (قالب صلاحيات)',
   pg_divs:'الأقسام المسموحة',pg_transfers:'التحويلات',pg_master:'البيانات الأساسية',pg_reportsG:'التقارير',pg_admin:'الإدارة',
@@ -456,7 +466,7 @@ const TX = {
   itemsCount:'Items',welcome:'Welcome',about:'About',aboutT:'Food transfers from the Main Kitchen and beverage & liquor transfers from the Main Bar to hotel locations, with daily, monthly and annual cost reports.',
   masterData:'Master Data',system:'System',account:'Account',readOnly:'View-only access',noPerm:'You do not have permission',lastPrice:'Last price',
   printRep:'Print report',year:'Year',dayCost:'Day cost',vouchersOfDay:'Vouchers of the day',storeFrom:'Store',priceWarn:'Items without price',
-  used:'Times used',all:'All',grand:'Grand Total',sheetNote:'Columns = days of month, cells = transferred quantities',setPrices:'Set prices',mergeQ:'This device has data that was never uploaded: {u} user(s) and {v} transfer(s). Upload them to the sheet now?',approve:'Approve',approved:'Approved',approveAll:'Approve all',approveAllQ:'Approve {n} transfers at once?',waitingApproval:'transfers waiting for approval',review:'Review',syncCode:'Hotel sync code',needSync:'Enter the sync code (once on this device)',cloudWait:'Connecting to cloud...',cloudFail:'Could not connect to the cloud — check the sync code or internet',
+  used:'Times used',all:'All',grand:'Grand Total',sheetNote:'Columns = days of month, cells = transferred quantities',setPrices:'Set prices',delItemQ:'Delete "{x}" permanently?',usedWarn:'This item is used in {n} transfer line(s) — old transfers will show it without a name. Consider unticking Active instead.',delDeptUsedQ:'"{x}" is used in {n} transfer(s). Deleting will not remove the transfers, but they will show without a location name. Delete anyway?',user:'User',mergeQ:'This device has data that was never uploaded: {u} user(s) and {v} transfer(s). Upload them to the sheet now?',approve:'Approve',approved:'Approved',approveAll:'Approve all',approveAllQ:'Approve {n} transfers at once?',waitingApproval:'transfers waiting for approval',review:'Review',syncCode:'Hotel sync code',needSync:'Enter the sync code (once on this device)',cloudWait:'Connecting to cloud...',cloudFail:'Could not connect to the cloud — check the sync code or internet',
   syncOnline:'Synced with Google Sheet',syncSyncing:'Uploading changes...',syncOffline:'Offline — changes will upload automatically',syncLocal:'Local only (sync not enabled)',syncTitle:'Cloud Sync',
   syncDisc:'Disconnect this device',syncDiscQ:'Disconnect this device from the cloud? You will need the sync code to reconnect.',syncConnect:'Enable sync on this device',remoteUpd:'Data updated from another device',tempNo:'temporary number (offline)',updating:'Updating to the latest version...',updateLater:'Update available — it will apply after you save this transfer',keepMaster:'Items, prices, locations and users are kept',install:'Install app on this device',installSub:'Works offline as a standalone app',iosInstall:'On iPhone: tap Share ⬆ then "Add to Home Screen"',installed:'App installed',offlineReady:'App is ready to work offline',updateReady:'A new version is available — tap to reload',issuedBy:'Issued by',food:'Food',bev:'Beverage',controller:'Cost Controller',custom:'custom',perms:'Permissions',rolePreset:'Role (permission template)',
   pg_divs:'Allowed divisions',pg_transfers:'Transfers',pg_master:'Master data',pg_reportsG:'Reports',pg_admin:'Administration',
@@ -766,10 +776,10 @@ function openVoucher(id){
      ${can('create')?`<button class="btn o" onclick="dupVoucher('${v.id}')">${ic('copy')}${t('dup')}</button>`:''}
      <button class="btn o" onclick="printVoucher('${v.id}')">${ic('print')}${t('print')}</button>
      ${v.status!=='received'&&can('confirm')?`<button class="btn g" onclick="confirmRec('${v.id}')">${ic('check')}${t('confirmRec')}</button>`:''}
-     ${can('delete')?`<button class="btn d" onclick="delVoucher('${v.id}')">${ic('trash')}</button>`:''}`);
+     ${can('delete')?`<button class="btn d" onclick="delVoucher('${v.id}')">${ic('trash')}${t('del')}</button>`:''}`);
 }
 function confirmRec(id){ const v=DB.vouchers.find(x=>x.id===id); v.status='received'; v.recBy=ME.u; v.recTs=Date.now(); persist(); closeModal(); renderNav(); render(); toast(t('approved')+' — '+v.no); }
-function delVoucher(id){ if(!confirm(t('confirmDel'))) return; DB.vouchers=DB.vouchers.filter(v=>v.id!==id); persist(); closeModal(); render(); toast(t('deleted')); }
+function delVoucher(id){ if(!can('delete')) return toast(t('noPerm')); const v0=DB.vouchers.find(x=>x.id===id); if(!confirm(t('confirmDel')+(v0?`\n${v0.no} · ${nm(deptById(v0.dept))} · ${fmt(vTotal(v0))} ${t('cur')}${v0.status==='received'?' · '+t('received'):''}`:''))) return; DB.vouchers=DB.vouchers.filter(v=>v.id!==id); persist(); closeModal(); render(); toast(t('deleted')); }
 function editVoucher(id){ const v=DB.vouchers.find(x=>x.id===id); DRAFT=JSON.parse(JSON.stringify(v)); closeModal(); go('form'); }
 function dupVoucher(id){ const v=DB.vouchers.find(x=>x.id===id); DRAFT={cat:v.cat||'food',date:todayStr(),from:v.from,dept:v.dept,notes:'',lines:v.lines.map(l=>({...l,price:itemById(l.item)?.price||l.price}))}; closeModal(); go('form'); }
 
@@ -952,23 +962,29 @@ function downloadCsv(rows,name){
   }
 }
 function download(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500); }
-function printHeader(title,sub){ return `<div class="pv-h"><img src="${LOGO_N}"><div style="flex:1"><h1>Al-Moudira Transfers</h1><p><b>${esc(title)}</b> · ${t(S.div)}</p><p>${sub||''}</p></div><div style="font-size:12px;color:#555;text-align:end">Hotel Al Moudira · Luxor<br>${new Date().toLocaleString('en-GB')}</div></div>`; }
-function doPrint(html){ const p=$('print'); p.innerHTML=`<div class="pv" dir="${LANG==='ar'?'rtl':'ltr'}">${html}</div>`; setTimeout(()=>{window.print();},150); }
+function printHeader(title,sub){ return `<div class="pv-h"><img src="${LOGO_N}"><div style="flex:1"><h1>Al-Moudira Transfers</h1><p><b>${esc(title)}</b> · ${t(S.div)}</p><p>${sub||''}</p></div><div class="meta">Hotel Al Moudira · Luxor<br>${new Date().toLocaleString('en-GB')}</div></div>`; }
+function doPrint(html,wide){
+  closeModal(); document.body.style.overflow=''; window.scrollTo(0,0);
+  const p=$('print'); p.innerHTML=`${wide?'<style>@page{size:A4 landscape;margin:10mm}</style>':''}<div class="pv${wide?' wide':''}" dir="${LANG==='ar'?'rtl':'ltr'}">${html}</div>`;
+  setTimeout(()=>{ window.print(); },250);
+}
 function printRep(){
   const tabName={dxd:'dayDept',sheet:'mSheet',dept:'deptSum',items:'itemRep',daily:'daily',annual:'annual'}[S.rtab];
   const sub={dxd:mName(S.ym),sheet:mName(S.ym)+(S.rdept?' · '+nm(deptById(S.rdept)):''),dept:S.rfrom+' → '+S.rto,items:S.rfrom+' → '+S.rto,daily:dName(S.rdate),annual:S.year}[S.rtab];
   const clone=$('rep').cloneNode(true); clone.querySelectorAll('.list-item,.day-h').forEach(e=>e.remove());
-  doPrint(printHeader(t(tabName),esc(sub))+clone.innerHTML.replace(/class="tbl-wrap"/g,'').replace(/class="t( grid)?"/g,''));
+  doPrint(printHeader(t(tabName),esc(sub))+clone.innerHTML.replace(/class="tbl-wrap"/g,'').replace(/class="t( grid)?"/g,''), ['dxd','sheet','items','annual'].includes(S.rtab));
 }
 function printVoucher(id){
   const v=DB.vouchers.find(x=>x.id===id), d=deptById(v.dept), st=storeById(v.from);
-  doPrint(printHeader(t((v.cat||'food')==='bev'?'bevVoucher':'transferVoucher'),`${t('vno')}: <b>${esc(v.no)}</b>`)+
-   `<table style="margin-bottom:12px"><tr><th>${t('date')}</th><td>${v.date}</td><th>${t('from')}</th><td>${esc(nm(st))}</td><th>${t('to')}</th><td><b>${esc(nm(d))}</b></td></tr></table>
-   <table><thead><tr><th>#</th><th>${t('item')}</th><th>${t('unit')}</th><th>${t('qty')}</th><th>${t('price')}</th><th>${t('value')}</th></tr></thead>
-   <tbody>${v.lines.map((l,i)=>{const it=itemById(l.item);return `<tr><td>${i+1}</td><td>${esc(it?.en)} — ${esc(it?.ar)}</td><td>${esc(it?.unit)}</td><td style="text-align:end">${fmt(l.qty,3)}</td><td style="text-align:end">${fmt(l.price)}</td><td style="text-align:end">${fmt(l.qty*l.price)}</td></tr>`}).join('')}</tbody>
-   <tfoot><tr><th colspan="5">${t('total')} (${t('cur')})</th><th style="text-align:end">${fmt(vTotal(v))}</th></tr></tfoot></table>
-   ${v.notes?`<p>${t('notes')}: ${esc(v.notes)}</p>`:''}
-   <div class="sig"><div>${esc(nm(st))} — ${t('issuedBy')}<br><small>${esc(v.user||'')}</small></div><div>${t('receivedBy')}</div><div>${t('approvedBy')}</div></div>`);
+  const qty=v.lines.reduce((s,l)=>s+(+l.qty||0),0);
+  doPrint(printHeader(t((v.cat||'food')==='bev'?'bevVoucher':'transferVoucher'),`${t('vno')}: <b style="font-size:18px">${esc(v.no)}</b>`)+
+   `<table class="pvinfo"><tr><th>${t('date')}</th><td>${v.date}</td><th>${t('from')}</th><td>${esc(nm(st))}</td><th>${t('to')}</th><td><b>${esc(nm(d))}</b></td></tr>
+    <tr><th>${t('status')}</th><td>${t(v.status==='received'?'received':'pending')}</td><th>${t('user')}</th><td>${esc(v.user||'')}</td><th>${t('items')}</th><td>${v.lines.length}</td></tr></table>
+   <table><thead><tr><th style="width:6%">#</th><th>${t('item')}</th><th style="width:9%">${t('unit')}</th><th class="num-c" style="width:11%">${t('qty')}</th><th class="num-c" style="width:13%">${t('price')}</th><th class="num-c" style="width:15%">${t('value')}</th></tr></thead>
+   <tbody>${v.lines.map((l,i)=>{const it=itemById(l.item)||{};return `<tr><td>${i+1}</td><td><b>${esc(it.en||l.item)}</b> — ${esc(it.ar||'')}</td><td>${esc(it.unit||'')}</td><td class="num-c">${fmt(l.qty,3)}</td><td class="num-c">${fmt(l.price)}</td><td class="num-c">${fmt(l.qty*l.price)}</td></tr>`}).join('')}</tbody>
+   <tfoot><tr><td colspan="3">${t('total')} (${t('cur')})</td><td class="num-c">${fmt(qty,3)}</td><td></td><td class="num-c">${fmt(vTotal(v))}</td></tr></tfoot></table>
+   ${v.notes?`<div class="notes"><b>${t('notes')}:</b> ${esc(v.notes)}</div>`:''}
+   <div class="sig"><div>${esc(nm(st))} — ${t('issuedBy')}<small>${esc(v.user||'')}</small></div><div>${t('receivedBy')}<small>${esc(nm(d))}</small></div><div>${t('approvedBy')}<small>${v.recBy?esc(v.recBy):'&nbsp;'}</small></div></div>`);
 }
 
 /* ---------- ITEMS TAB ---------- */
@@ -1065,13 +1081,33 @@ function editItem(id){
    <div><label>${t('group')}</label><input class="inp" id="eGrp" list="grpList" value="${esc(i.grp||'')}"><datalist id="grpList">${grps.map(g=>`<option value="${esc(g)}">`).join('')}</datalist></div>
    <label class="chk full"><input type="checkbox" id="eAct" ${i.active!==false?'checked':''}>${t('active')}</label>
    ${id?`<p class="muted full" style="margin:0;font-size:12.5px">${t('lastPrice')}: <span class="num">${fmt(lastPrice(id))}</span> · ${t('used')}: <span class="num">${usage()[id]||0}</span></p>`:''}
-  </div>`,`<button class="btn o" onclick="mgItems()">${t('cancel')}</button><button class="btn p" onclick="saveItem('${id||''}')">${ic('check')}${t('save')}</button>`);
+  </div>`,`${id&&has('delete')?`<button class="btn d" onclick="delItem('${id}')">${ic('trash')}${t('del')}</button>`:''}<button class="btn o" onclick="mgItems()">${t('cancel')}</button><button class="btn p" onclick="saveItem('${id||''}')">${ic('check')}${t('save')}</button>`);
 }
 function saveItem(id){
   const en=$('eEn').value.trim(), ar=$('eAr').value.trim(); if(!en&&!ar) return;
   const o={en:en||ar,ar:ar||en,unit:$('eUnit').value,price:+$('ePrice').value.replace(',','.')||0,active:$('eAct').checked,cat:$('eCat').value,grp:$('eGrp').value.trim()};
   if(id) Object.assign(itemById(id),o); else DB.items.push({id:'I'+uid(),...o});
   persist(); toast(t('saved')); if(S.view==='items'){ closeModal(); render(); } else mgItems();
+}
+function delItem(id){
+  const i=itemById(id), n=DB.vouchers.reduce((s,v)=>s+v.lines.filter(l=>l.item===id).length,0);
+  if(!confirm(t('delItemQ').replace('{x}',nm(i))+(n?'\n\n⚠ '+t('usedWarn').replace('{n}',n):''))) return;
+  DB.items=DB.items.filter(x=>x.id!==id); persist(); toast(t('deleted'));
+  if(S.view==='items'){ closeModal(); render(); } else mgItems();
+}
+function delDept(id){
+  const d=deptById(id), n=DB.vouchers.filter(v=>v.dept===id).length;
+  if(n){ if(!confirm(t('delDeptUsedQ').replace('{x}',nm(d)).replace('{n}',n))) return; }
+  else if(!confirm(t('delItemQ').replace('{x}',nm(d)))) return;
+  DB.depts=DB.depts.filter(x=>x.id!==id); DB.users.forEach(u=>{ if(u.dept===id) u.dept=''; });
+  persist(); toast(t('deleted')); if(S.view==='form'){ closeModal(); render(); } else mgDepts();
+}
+function delUser(un){
+  if(un===ME.u) return;
+  const others=DB.users.filter(z=>z.u!==un&&z.active&&permsOf(z).includes('users'));
+  if(!others.length) return toast(t('lastAdmin'));
+  if(!confirm(t('delItemQ').replace('{x}','@'+un))) return;
+  DB.users=DB.users.filter(x=>x.u!==un); persist(); toast(t('deleted')); mgUsers();
 }
 function mgDepts(){
   openModal(`${ic('building')}<b>${t('depts')}</b>`, DB.depts.map(d=>`<div class="pick" onclick="editDept('${d.id}')"><span class="dot" style="width:14px;height:14px;border-radius:50%;background:${d.color}"></span><div class="mid"><b>${esc(nm(d))}</b><span>${esc(alt(d))}</span></div>${ic('edit')}</div>`).join('').replace(/<div class="pick" onclick="editDept\('([^']+)'\)"/g,(m,id)=>deptById(id).active===false?m+' style="opacity:.5"':m),
@@ -1082,7 +1118,7 @@ function editDept(id){
   openModal(`${ic('edit')}<b>${esc(id?nm(d):t('add'))}</b>`,`<div class="frm"><div class="full"><label>${t('nameEn')}</label><input class="inp" id="eEn" value="${esc(d.en)}"></div>
    <div class="full"><label>${t('nameAr')}</label><input class="inp" id="eAr" value="${esc(d.ar)}" dir="rtl"></div><div><label>${t('color')}</label><input type="color" class="inp" id="eCol" value="${d.color}" style="width:100%;padding:4px"></div>
    <label class="chk" style="align-self:end;height:44px"><input type="checkbox" id="eAct" ${d.active!==false?'checked':''}>${t('active')}</label></div>`,
-   `<button class="btn o" onclick="${S.view==='form'?'closeModal()':'mgDepts()'}">${t('cancel')}</button><button class="btn p" onclick="saveDept('${id||''}')">${ic('check')}${t('save')}</button>`);
+   `${id&&has('delete')?`<button class="btn d" onclick="delDept('${id}')">${ic('trash')}${t('del')}</button>`:''}<button class="btn o" onclick="${S.view==='form'?'closeModal()':'mgDepts()'}">${t('cancel')}</button><button class="btn p" onclick="saveDept('${id||''}')">${ic('check')}${t('save')}</button>`);
 }
 function saveDept(id){ const en=$('eEn').value.trim(),ar=$('eAr').value.trim(); if(!en&&!ar) return; const o={en:en||ar,ar:ar||en,color:$('eCol').value,active:$('eAct').checked};
   let nid=id; if(id) Object.assign(deptById(id),o); else { nid='D'+uid(); DB.depts.push({id:nid,...o}); }
@@ -1115,7 +1151,7 @@ function editUser(un){
    <div class="full"><label style="font-size:14px;margin-top:4px">${ic('shield')} ${t('perms')}</label>
    ${PERMS.map(([g,list])=>`<div class="pgrp"><b>${t('pg_'+g)}</b><div class="row2">${list.map(p=>`<label class="chk"><input type="checkbox" class="uperm" value="${p}" ${P.has(p)?'checked':''} ${self&&p==='users'?'disabled':''}>${t('p_'+p)}</label>`).join('')}</div></div>`).join('')}
    </div></div>`,
-   `<button class="btn o" onclick="mgUsers()">${t('cancel')}</button><button class="btn p" onclick="saveUser('${un||''}')">${ic('check')}${t('save')}</button>`);
+   `${un&&un!==ME.u&&has('users')?`<button class="btn d" onclick="delUser('${un}')">${ic('trash')}${t('del')}</button>`:''}<button class="btn o" onclick="mgUsers()">${t('cancel')}</button><button class="btn p" onclick="saveUser('${un||''}')">${ic('check')}${t('save')}</button>`);
 }
 function applyRole(r){ document.querySelectorAll('.uperm').forEach(c=>{ if(!c.disabled) c.checked=(ROLES[r]||[]).includes(c.value); }); }
 function saveUser(un){
